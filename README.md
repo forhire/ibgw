@@ -10,10 +10,12 @@ HELM 3 chart to deploy IB Gateway running in Docker to a Kubernetes cluster. Cur
 
 * To deploy, create a values.yaml outside this repo with your IB Gateway credentials
 
+```
 IBAuth: true
 TWSUSERID: "YOUR_IB_USERNAME_HERE"
 TWSPASSWORD: "YOUR_IB_PASSWORD_HERE"
 VNC_PASSWORD: "YOUR_VNC_PASSWORD_HERE"
+```
 
 and 
 
