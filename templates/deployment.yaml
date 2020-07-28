@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ibgw.fullname" . }}
+  labels:
+    {{- include "ibgw.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "ibgw.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "ibgw.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "ibgw.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+          - name: IBC_INI
+            value: {{ .Values.IBC_INI | quote }}
+          - name: TZ
+            value: {{ .Values.TZ | quote }}
+          - name: TWS_MAJOR_VRSN
+            value: {{ .Values.TWS_MAJOR_VRSN | quote }}
+          - name: IBC_PATH
+            value: {{ .Values.IBC_PATH | quote }}
+          - name: TWS_PATH
+            value: {{ .Values.TWS_PATH | quote }}
+          - name: TWS_CONFIG_PATH
+            value: {{ .Values.TWS_CONFIG_PATH | quote }}
+          - name: LOG_PATH
+            value: {{ .Values.LOG_PATH | quote }}
+          - name: JAVA_PATH
+            value: {{ .Values.JAVA_PATH | quote }}
+          - name: APP
+            value: {{ .Values.APP | quote }}
+          - name: TRADING_MODE
+            value: {{ .Values.TRADING_MODE | quote }}
+          - name: TWSUSERID
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Release.Namespace }}-ibroker-secrets
+                key: TWSUSERID
+          - name: TWSPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Release.Namespace }}-ibroker-secrets
+                key: TWSPASSWORD
+          - name: VNC_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Release.Namespace }}-ibroker-secrets
+                key: VNC_PASSWORD
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: ibgw-port
+              containerPort: 4001
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 4001
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 4001
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
