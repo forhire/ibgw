@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: forhire/ibgwdocker
+  repository: forhire/ibgateway
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -38,6 +38,7 @@ LOG_PATH: "/opt/IBController/Logs"
 JAVA_PATH: "/opt/i4j_jres/1.8.0_152-tzdata2019c/bin"
 TRADING_MODE: "live"
 APP: "GATEWAY"
+DISPLAY: ":0"
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -51,8 +52,10 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  name: ibgw-socat
   type: ClusterIP
-  port: 4001
+  srcport: 4003
+  dstport: 4003
 
 ingress:
   enabled: false

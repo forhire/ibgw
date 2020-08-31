@@ -7,9 +7,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 4001
+    - port: {{ .Values.service.srcport }}
+      targetPort: {{ .Values.service.dstport }}
       protocol: TCP
-      name: ibgw
+      name: {{ .Values.service.name }}
   selector:
     {{- include "ibgw.selectorLabels" . | nindent 4 }}
