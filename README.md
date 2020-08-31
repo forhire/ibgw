@@ -34,6 +34,6 @@ Kubernetes kubectl commands can be used for troubleshooting. Typically:
 
 to get the POD name.
 
-```kubectl describe pod/pod/ibgw-unique-values```
+```kubectl describe pod/ibgw-unique-values```
 
 to show details about the POD. 
