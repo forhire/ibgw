@@ -73,10 +73,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: ibgw-port
-              containerPort: 4001
+              containerPort: {{ .Values.SOCAT_DEST_PORT }} 
               protocol: TCP
             - name: ibgw-socat
-              containerPort: 4003
+              containerPort: {{ .Values.SOCAT_LISTEN_PORT }}
               protocol: TCP
           livenessProbe:
             tcpSocket:
@@ -85,7 +85,7 @@ spec:
             periodSeconds: 10
           readinessProbe:
             tcpSocket:
-              port: 4001
+              port: {{ .Values.SOCAT_DEST_PORT }}
             initialDelaySeconds: 30
             periodSeconds: 10
           resources:
