@@ -46,6 +46,12 @@ spec:
             value: {{ .Values.DISPLAY | quote }}
           - name: TRADING_MODE
             value: {{ .Values.TRADING_MODE | quote }}
+          - name: SOCAT_LISTEN_PORT
+            value: {{ .Values.SOCAT_LISTEN_PORT | quote }}
+          - name: SOCAT_DEST_PORT
+            value: {{ .Values.SOCAT_DEST_PORT | quote }}
+          - name: SOCAT_DEST_ADDR
+            value: {{ .Values.SOCAT_DEST_ADDR | quote }}
           - name: TWSUSERID
             valueFrom:
               secretKeyRef:

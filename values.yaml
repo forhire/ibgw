@@ -39,6 +39,9 @@ JAVA_PATH: "/opt/i4j_jres/1.8.0_152-tzdata2019c/bin"
 TRADING_MODE: "live"
 APP: "GATEWAY"
 DISPLAY: ":0"
+SOCAT_LISTEN_PORT: "4003"
+SOCAT_DEST_ADDR: "127.0.0.1"
+SOCAT_DEST_PORT: "4001"
 
 podSecurityContext: {}
   # fsGroup: 2000
