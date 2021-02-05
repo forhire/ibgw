@@ -6,6 +6,7 @@ replicaCount: 1
 
 image:
   repository: forhire/ibgateway
+  AppVersion: version-1.16.2
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

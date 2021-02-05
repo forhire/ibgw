@@ -37,8 +37,8 @@ Common labels
 {{- define "ibgw.labels" -}}
 helm.sh/chart: {{ include "ibgw.chart" . }}
 {{ include "ibgw.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Values.image.AppVersion }}
+app.kubernetes.io/version: {{ .Values.image.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
