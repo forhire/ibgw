@@ -80,7 +80,7 @@ spec:
               protocol: TCP
           livenessProbe:
             tcpSocket:
-              port: 4001
+              port: {{ .Values.SOCAT_DEST_PORT }}
             initialDelaySeconds: 60
             periodSeconds: 10
           readinessProbe:
