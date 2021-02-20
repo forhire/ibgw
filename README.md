@@ -8,7 +8,6 @@ This HELM chart deploys the following Docker container by default. This can be o
 
 * https://hub.docker.com/r/forhire/ibgwdocker
 
-
 ### Deploying
 
 * To deploy, create a values.yaml outside this repo with your IB Gateway credentials
@@ -27,7 +26,9 @@ and
 Then, deploy with:
 
 ```
-helm3 install ibgw ./ibgw/  -f values.yaml 
+helm3 repo add ibgw-forhire https://forhire.github.io/ibgw/ # to add this repo
+
+helm3 install ibgw ibgw-forhire/ibgw -f values.yaml 
 ```
 
 ### Troubleshooting
