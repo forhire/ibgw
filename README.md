@@ -1,4 +1,4 @@
-# Interactive Brokers Gateway HELM 3 Chart to deploy to Kubernetes
+# Helm 3 charts to deploy Interactive Brokers Gateway and other IB related containers to Kubernets
 
 HELM 3 chart to deploy IB Gateway running in Docker to a Kubernetes cluster. Currently has basic TCP port monitoring so Kubernetes will restart the instance, if it stops responding.
 
