@@ -4,7 +4,10 @@ HELM 3 chart to deploy IB Gateway running in Docker to a Kubernetes cluster. Cur
 
 ### Docker Hub image
 
+This HELM chart deploys the following Docker container by default. This can be overridden in the values.yaml:
+
 * https://hub.docker.com/r/forhire/ibgwdocker
+
 
 ### Deploying
 
