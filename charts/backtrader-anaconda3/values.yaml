@@ -8,7 +8,7 @@ image:
   repository: forhire/backtrader-anaconda3
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "release-0.0.4"
+  tag: "release-0.0.5"
 
 imagePullSecrets: []
 nameOverride: ""
