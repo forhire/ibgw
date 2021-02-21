@@ -28,7 +28,10 @@ Then, deploy with:
 ```
 helm3 repo add ibgw-forhire https://forhire.github.io/ibgw/ # to add this repo
 
-helm3 install ibgw ibgw-forhire/ibgw -f values.yaml 
+helm3 install -n ibroker-paper ibgw ibgw-forhire/ibgw -f values.yaml 
+
+helm install -n ibroker-paper backtrader ibgw-forhire/backtrader-helm # To install Backtrader Anaconda Jupyter Notebook in the ibroker-paper namespace
+
 ```
 
 ### Troubleshooting
