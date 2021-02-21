@@ -3,6 +3,16 @@ entries:
   backtrader-helm:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-02-21T19:55:14.892868182Z"
+    description: A Helm chart for managing backtrader on Kubernetes
+    digest: 36f95450a2c6a0e10e1e5ec80a1bc8a274e4c2211c6ded87b683e782f1bce043
+    name: backtrader-helm
+    type: application
+    urls:
+    - https://github.com/forhire/ibgw/releases/download/backtrader-helm-0.1.6/backtrader-helm-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-02-21T14:28:00.69264929Z"
     description: A Helm chart for managing backtrader on Kubernetes
     digest: 8a56ec9534367ed7c3cc3d55469a43d20ec101284d083349bce32a361e7a9f01
