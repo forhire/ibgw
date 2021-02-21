@@ -34,10 +34,10 @@ helm3 install ibgw ibgw-forhire/ibgw -f values.yaml
 ### Troubleshooting
 
 Kubernetes kubectl commands can be used for troubleshooting. Typically:
-```kubectl get all ```
+```kubectl get all -n namespace```
 
 to get the POD name.
 
-```kubectl describe pod/ibgw-unique-values```
+```kubectl describe pod/ibgw-unique-values -n namespace```
 
 to show details about the POD. 
