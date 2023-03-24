@@ -63,6 +63,15 @@ entries:
     version: 0.1.4
   ibgw:
   - apiVersion: v2
+    created: "2023-03-24T12:05:08.226278631Z"
+    description: Interactive Brokers Gateway Helm3 chart
+    digest: 29d5f0487ccaf35312a29661c904e1c86fe98ed5d39117cadd00d660df536c99
+    name: ibgw
+    type: application
+    urls:
+    - https://github.com/forhire/ibgw/releases/download/ibgw-0.4.4/ibgw-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
     created: "2023-03-24T12:02:29.962891275Z"
     description: Interactive Brokers Gateway Helm3 chart
     digest: 70ad9a76651718e6a9fd59269c8c30a30081f2cfaf1fd9b7eff5cd6704c329e0
