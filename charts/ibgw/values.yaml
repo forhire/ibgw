@@ -29,7 +29,7 @@ FIXUSERID: ""
 FIXPASSWORD: ""
 VNC_PASSWORD: ""
 
-IBC_INI: "/root/IBController/IBController.ini"
+IBC_INI: "/opt/IBController/IBController.ini"
 TZ: "America/Chicago"
 TWS_MAJOR_VRSN: "stable-standalone"
 IBC_PATH: "/opt/IBController"
