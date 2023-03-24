@@ -44,3 +44,18 @@ to get the POD name.
 ```kubectl describe pod/ibgw-unique-values -n namespace```
 
 to show details about the POD. 
+
+## Istio 
+
+A sample Istio Service Mesh configuration does the following:
+
+    Creates a Gateway for the trademonitor service, enabling HTTPS on port 443 with an HTTP redirect from port 80
+
+    Defines a VirtualService for the trademonitor service, routing traffic from the Gateway to the trademonitor service on port 8080
+
+    Configures mTLS with a DestinationRule and a PeerAuthentication resource, ensuring that all services in the namespace communicate securely
+
+    Creates a Certificate resource using cert-manager and Let's Encrypt for DOMAIN_HERE.com, which will be stored in a Kubernetes secret named "domain_here-tls"
+
+Please note that you need to have Istio and cert-manager installed on your cluster to use this configuration.
+

@@ -1,0 +1,77 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: trademonitor-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "DOMAIN_HERE.com"
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "DOMAIN_HERE.com"
+    tls:
+      mode: SIMPLE
+      credentialName: domainhere-tls
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: trademonitor
+spec:
+  hosts:
+  - "DOMAIN_HERE.com"
+  gateways:
+  - trademonitor-gateway
+  http:
+  - route:
+    - destination:
+        host: trademonitor
+        port:
+          number: 8080
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: default-mtls
+spec:
+  host: "*.svc.cluster.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: PeerAuthentication
+metadata:
+  name: default
+spec:
+  mtls:
+    mode: STRICT
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: domainhere-tls
+spec:
+  commonName: DOMAIN_HERE.com
+  dnsNames:
+  - DOMAIN_HERE.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  secretName: domainhere-tls
+
