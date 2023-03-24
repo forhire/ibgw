@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: forhire/ibgateway
-  AppVersion: version-1.19.1
+  AppVersion: version-1.23.2
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -31,7 +31,7 @@ VNC_PASSWORD: ""
 
 IBC_INI: "/root/IBController/IBController.ini"
 TZ: "America/Chicago"
-TWS_MAJOR_VRSN: "978"
+TWS_MAJOR_VRSN: "stable-standalone"
 IBC_PATH: "/opt/IBController"
 TWS_PATH: "/root/Jts"
 TWS_CONFIG_PATH: "/root/Jts"
@@ -42,7 +42,7 @@ APP: "GATEWAY"
 DISPLAY: ":0"
 SOCAT_LISTEN_PORT: "4003"
 SOCAT_DEST_ADDR: "127.0.0.1"
-SOCAT_DEST_PORT: "4001"
+SOCAT_DEST_PORT: "4002"
 
 podSecurityContext: {}
   # fsGroup: 2000
